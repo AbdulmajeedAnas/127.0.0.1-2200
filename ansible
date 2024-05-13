@@ -1,0 +1,17 @@
+---
+
+- name: Execute bash
+ hosts: 127.0.0.1:2200
+ tasks:
+        -name: Execute script
+        shell: /home/vagrant/script.sh
+
+- name: Cron
+ hosts: 127.0.0.1:2200
+ tasks:
+        - name: Check uptime
+        cron:
+        name: "confirm uptime"
+        minute: 0
+        hour: 0
+        job: "uptime >> /home/vagrant/script.sh"
